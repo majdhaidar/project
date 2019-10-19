@@ -7,12 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Projects</h1>
-    <p><a href="/projects/create">Create new project</a></p>
-    <ul>
-        @foreach ($projects as $project)
-            <li>{{$project->title}}</li>    
-        @endforeach
-    </ul>
+    <h1>Create new project</h1>
 </body>
 </html>
