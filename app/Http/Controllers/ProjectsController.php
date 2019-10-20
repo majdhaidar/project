@@ -66,6 +66,8 @@ class ProjectsController extends Controller
     public function edit(Project $project)
     {
         //
+        //dd($project->title);
+        return view('projects.edit',compact('project'));
     }
 
     /**
@@ -78,6 +80,11 @@ class ProjectsController extends Controller
     public function update(Request $request, Project $project)
     {
         //
+        //dd($request);
+        $project->title = $request->title;
+        $project->description = $request->description;
+        $project->save();
+        return redirect('/projects');
     }
 
     /**
