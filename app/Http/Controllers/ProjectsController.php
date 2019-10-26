@@ -96,5 +96,8 @@ class ProjectsController extends Controller
     public function destroy(Project $project)
     {
         //
+        //dd($project->title);
+        $project->delete();
+        return redirect('/projects');
     }
 }
