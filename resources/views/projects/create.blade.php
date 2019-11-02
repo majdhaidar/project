@@ -5,9 +5,16 @@
 <div>
     <form action="/projects" method="POST">
         {{ csrf_field() }}
-        <p><input class="form-control" type="text" name="title" placeholder="Project Title"></p>
-        <p><textarea class="form-control" name="description" placeholder="Project Description" id="" cols="30" rows="10"></textarea></p>
+        <p><input class="form-control danger {{$errors->has('title')?'dangerField':''}}" type="text" name="title" placeholder="Project Title" value="{{old('title')}}"></p>
+        <p><textarea class="form-control {{$errors->has('description')?'dangerField':''}}" name="description" placeholder="Project Description" id="" cols="30" rows="10">{{old('description')}}</textarea></p>
         <p><button type="submit" class="btn btn-success">Create Project</button></p>
     </form>
 </div>
+@if ($errors->any())    
+        <ul class="list-group">
+            @foreach ($errors->all() as $error)
+                <li class="list-group-item list-group-item-danger" >{{$error}}</li>
+            @endforeach
+        </ul>
+@endif
 @endsection

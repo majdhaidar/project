@@ -49,9 +49,17 @@ class ProjectsController extends Controller
         //     'description'=>request('description')
         // ]);
         //OR REPLACE THE ABOVE BY
-        Project::create($request->all());
-        //OR REPLACE ABOVE WITH
-        //Project::create($request(['title', 'description']));
+        // $request->validate([
+        //     'title'=>['required', 'min:3', 'max:50'],
+        //     'description'=>['required', 'min:10']
+        // ]);
+        // Project::create($request->all());
+        //REPLACE ABOVE TO BELOW
+        $validate =$request->validate([
+            'title'=>['required', 'min:3', 'max:50'],
+            'description'=>['required', 'min:10']
+        ]);
+        Project::create($validate);
         return redirect('/projects');
     }
 
