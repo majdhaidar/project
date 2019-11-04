@@ -35,3 +35,4 @@ Route::get('/about','PagesController@aboutUs');
 // Route::post('/projects','ProjectsController@store');
 //REPLACE ALL THE ABOVE WITH
 Route::resource('projects', 'ProjectsController');
+Route::resource('tasks', 'TasksController');
