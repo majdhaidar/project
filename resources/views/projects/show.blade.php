@@ -25,4 +25,9 @@
 <p>
     <a href="/projects/{{$project->id}}/edit">Edit</a>    
 </p>
+<form action="/projects/{{$project->id}}/task" method="post">
+    @csrf
+    <p><input class="form-control" type="text" name="description" placeholder="Task Description"></p>
+    <button type="submit" class="btn btn-success" autocomplete="off">Add New Task</button>
+</form>
 @endsection

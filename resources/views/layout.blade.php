@@ -11,6 +11,16 @@
 <body>
     <div class="container">
         @yield('content')
+
+        @if ($errors->any())  
+        <p>  
+            <ul class="list-group">
+                @foreach ($errors->all() as $error)
+                    <li class="list-group-item list-group-item-danger" >{{$error}}</li>
+                @endforeach
+            </ul>
+        @endif
+        </p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
