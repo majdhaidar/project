@@ -9,22 +9,21 @@ use Illuminate\Support\Facades\Request;
 
 class Project extends Model
 {
-    //
+    //SET FIELDS THAT CAN BE FILLED WITH USER INPUT
     protected $fillable = ['title', 'description'];
-    //or 
-    //protected $guarded = [];
-
+    //SET MODEL RELATION BETWEEN PROJECTS AND TASKS
     public function tasks(){
         return $this->hasMany(Task::class);
     }
-
+    //FUNCTION TO CREATE TASK FOR SPECIFIC PROJECT
     public function createTask($description){
-        // return Task::create([
-        //     'project_id'=>$this->id,
-        //     'description'=>$description
-        // ]);
-        // REPLACE ABOVE BY
-        //dd($description);
         $this->tasks()->create(['description'=>$description]);
+    }
+    //UPDATE PROJECT TITLE AND DESCRIPTION
+    public function updateProject($title, $description){
+        $this->update([
+            'title'=>$title,
+            'description'=>$description
+        ]);
     }
 }

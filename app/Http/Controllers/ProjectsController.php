@@ -14,7 +14,6 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        //
         $projects = Project::all();
         return view('projects.index', compact('projects'));
     }
@@ -26,7 +25,6 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
         return view('projects.create');
     }
 
@@ -38,23 +36,6 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $project = new Project();
-        // $project->title = request('title');
-        // $project->description = request('description');
-        // $project->save();
-        //REPLACE THE ABOVE CODE WITH
-        // Project::create([
-        //     'title'=>request('title'),
-        //     'description'=>request('description')
-        // ]);
-        //OR REPLACE THE ABOVE BY
-        // $request->validate([
-        //     'title'=>['required', 'min:3', 'max:50'],
-        //     'description'=>['required', 'min:10']
-        // ]);
-        // Project::create($request->all());
-        //REPLACE ABOVE TO BELOW
         $validate =$request->validate([
             'title'=>['required', 'min:3', 'max:50'],
             'description'=>['required', 'min:10']
@@ -71,7 +52,6 @@ class ProjectsController extends Controller
      */
     public function show(Project $project)
     {
-        //
         return view('projects.show', compact('project'));
     }
 
@@ -83,8 +63,6 @@ class ProjectsController extends Controller
      */
     public function edit(Project $project)
     {
-        //
-        //dd($project->title);
         return view('projects.edit',compact('project'));
     }
 
@@ -97,15 +75,12 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
-        //dd($request);
-        // $project->title = $request->title;
-        // $project->description = $request->description;
-        // $project->save();
-        //REPLACE ABOVE WITH
-        $project->update([
-            'title'=>$request->title,
-            'description'=>$request->description]);
+        if($request->has('title') && $request->has('description'))
+        {
+            $title = $request->title;
+            $description = $request->description;
+            $project->updateProject($title, $description);
+        }
         return redirect('/projects');
     }
 
@@ -117,8 +92,6 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
-        //dd($project->title);
         $project->delete();
         return redirect('/projects');
     }

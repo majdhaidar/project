@@ -34,14 +34,7 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //dd($request->all());
-        // $validate= $request->validate([
-        //     'description'=>['required', 'min:10'],
-        //     'project_id'=>['required']
-        // ]);
-        // Task::create($validate);
-        // return back();
+       
     }
 
     /**
@@ -75,11 +68,7 @@ class TasksController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
-        //dd($request->all());
-        $task->update([
-            'completed'=> $request->has('completed')
-        ]);
+        $request->has('completed')?$task->completed():$task->inCompleted();
         return back();
     }
 

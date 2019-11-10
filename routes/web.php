@@ -19,21 +19,7 @@
  * PATCH /projects/{id} (update)
  * DELETE /projects/{id} (destroy)
  */
-Route::get('/','PagesController@home');
 
-Route::get('/contact', 'PagesController@contact');
-
-Route::get('/about','PagesController@aboutUs');
-
-///projects
-// Route::get('/projects','ProjectsController@index');
-// Route::get('/projects/create','ProjectsController@create');
-// Route::get('/projects/show/{project}','ProjectsController@show');
-// Route::get('/projects/{project}/edit','ProjectsController@edit');
-// Route::patch('/projects/{project}','ProjectsController@update');
-// Route::delete('/projects/{project}','ProjectsController@destroy');
-// Route::post('/projects','ProjectsController@store');
-//REPLACE ALL THE ABOVE WITH
-Route::resource('projects', 'ProjectsController');
+Route::resource('/', 'ProjectsController');
 Route::resource('tasks', 'TasksController');
 Route::post('/projects/{project}/task', 'ProjectTasksController@store');

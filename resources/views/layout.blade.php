@@ -6,12 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/styles.css') }}" />
-    <title>Document</title>
+    <title>@yield('title')</title>
 </head>
 <body>
     <div class="container">
+        <!--
+        PAGE CONTENT GOES HERE
+        -->
         @yield('content')
-
+        <!--
+        INCLUDE ERRORS SECTION FOR ALL PAGES
+        -->
         @include('errors')
         
     </div>
