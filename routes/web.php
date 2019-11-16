@@ -19,6 +19,15 @@
  * PATCH /projects/{id} (update)
  * DELETE /projects/{id} (destroy)
  */
+// app()->bind('example', function(){
+//     return new App\Example();
+// });
+app()->singleton('App\Foo', function(){
+    return new App\Foo();
+});
+Route::get('/', function(){
+    dd(app(App\Example::class));
+});
 
 Route::resource('projects', 'ProjectsController');
 Route::resource('tasks', 'TasksController');
