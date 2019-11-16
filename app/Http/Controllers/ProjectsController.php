@@ -75,12 +75,11 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        if($request->has('title') && $request->has('description'))
-        {
-            $title = $request->title;
-            $description = $request->description;
-            $project->updateProject($title, $description);
-        }
+        $request->validate([
+            'title'=>['required', 'min:5'],
+            'description'=>['required', 'min:10']
+        ]);
+        $project->updateProject($request->title, $request->description);
         return redirect('/projects');
     }
 

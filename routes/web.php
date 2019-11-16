@@ -20,6 +20,6 @@
  * DELETE /projects/{id} (destroy)
  */
 
-Route::resource('/', 'ProjectsController');
+Route::resource('projects', 'ProjectsController');
 Route::resource('tasks', 'TasksController');
 Route::post('/projects/{project}/task', 'ProjectTasksController@store');
